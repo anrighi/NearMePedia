@@ -1,22 +1,20 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Image, Text, View, Button } from 'react-native';
-import POI from 'PoiCard';
+import Poicard from './PoiCard';
+import DevLocation from './DevLocation';
 
 export default class WikiList extends React.Component {
 
  render() {
    return (
-       <View className="patient-container">
-       		<Text>
-       			{this.getWikiList()};
-       		</Text>
-
-       		
+       <View className="patient-container">	
+       		<Poicard title='titolo'/>	
+       		<DevLocation/>
        </View>
    );
  }
 
-
+}
 
 const styles = StyleSheet.create({
   container: {

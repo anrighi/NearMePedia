@@ -1,4 +1,4 @@
-mport React, { Component } from 'react';
+import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
@@ -8,7 +8,8 @@ export default class DevLocation extends React.Component {
   
   componentWillMount() {
     if (Platform.OS === 'android' && !Constants.isDevice) {
-      this.props.errorMessage: 'Not working in an Emulator. Try with real device';
+      //this.props.errorMessage = 'Not working in an Emulator. Try with real device';
+      console.log('platform error');
     } else {
       this._getLocationAsync();
     }
@@ -23,9 +24,15 @@ export default class DevLocation extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    console.log(location.latitude "|" location.longitude)
+    console.log(location.coords.latitude + "|" + location.coords.longitude)
 
     //this.props.lat: location.latitude,
     //this.props.lon: location.longitude,
   };
+
+  render(){
+    return(
+       <Text>Done!</Text>
+    );
+  }
 }
