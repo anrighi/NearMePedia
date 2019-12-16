@@ -1,20 +1,17 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Image, Text, View, Button } from 'react-native';
 import Poicard from './PoiCard';
-import DevLocation from './DevLocation';
+import { connect } from 'react-redux'
 
-export default class WikiList extends React.Component {
-
- render() {
-   return (
-       <View className="patient-container">	
-       		<Poicard title='titolo'/>	
-       		<DevLocation/>
-       </View>
-   );
- }
-
-}
+class WikiList extends React.Component {
+	
+	render() {
+		return(	
+			<View className="patient-container">	
+				<Poicard title='titolo'/>
+				<Text>{coord.lat}</Text>
+			</View>
+		)}} 
 
 const styles = StyleSheet.create({
   container: {
@@ -24,3 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default connect()(WikiList)

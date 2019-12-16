@@ -3,8 +3,11 @@ import { Platform, Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import getLocation from '../assets/reducers/reducer'
+import { connect } from 'react-redux'
+import WikiList from './WikiList'
 
-export default class DevLocation extends React.Component {
+class DevLocation extends React.Component {
   
   componentWillMount() {
     if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -36,3 +39,5 @@ export default class DevLocation extends React.Component {
     );
   }
 }
+
+export default connect()(WikiList)
