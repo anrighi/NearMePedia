@@ -22,7 +22,7 @@ const persistedReducer = persistReducer(persistConfig, positionReducer);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
-store.dispatch(getLocation(46.4925704, 11.3210021))
+store.dispatch(getLocation(52, 11.3210021))
 
 const App = () => {
     return (
