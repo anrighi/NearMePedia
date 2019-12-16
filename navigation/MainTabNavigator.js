@@ -4,7 +4,8 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import PoiScreen from '../screens/PoiScreen';
+import ReadingListScreen from '../screens/ReadingListScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
@@ -35,21 +36,37 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
-    {
-        Links: LinksScreen,
-    },
-    config
+const PoiStack = createStackNavigator(
+  {
+    Poi: PoiScreen,
+  },
+  config
 );
 
-LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}/>
-    ),
+PoiStack.navigationOptions = {
+  tabBarLabel: 'POI',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
 };
 
-LinksStack.path = '';
+PoiStack.path = '';
+
+const ReadingListStack = createStackNavigator(
+  {
+    ReadingList: ReadingListScreen,
+  },
+  config
+);
+
+ReadingListStack.navigationOptions = {
+  tabBarLabel: 'Reading List',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+ReadingListStack.path = '';
 
 const SettingsStack = createStackNavigator(
     {
@@ -68,9 +85,16 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
+<<<<<<< HEAD
     HomeStack,
     LinksStack,
     SettingsStack,
+=======
+  HomeStack,
+  PoiStack,
+  ReadingListStack,
+  SettingsStack,
+>>>>>>> 131a6cf27000a671adf3070285ceb69804fdd5e8
 });
 
 tabNavigator.path = '';
