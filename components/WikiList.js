@@ -11,7 +11,7 @@ export default class WikiList extends React.Component {
        			{this.getWikiList()};
        		</Text>
 
-       		<POI name={} />
+       		
        </View>
    );
  }

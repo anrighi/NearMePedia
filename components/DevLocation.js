@@ -4,18 +4,11 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
-export default class Location extends React.Component {
-  state = {
-    lat: null,
-    lon: null,
-    errorMessage: null,
-  };
-
+export default class DevLocation extends React.Component {
+  
   componentWillMount() {
     if (Platform.OS === 'android' && !Constants.isDevice) {
-      this.setState({
-        errorMessage: 'Not working in an Emulator. Try with real device',
-      });
+      this.props.errorMessage: 'Not working in an Emulator. Try with real device';
     } else {
       this._getLocationAsync();
     }
@@ -23,12 +16,16 @@ export default class Location extends React.Component {
 
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
+   
     if (status !== 'granted') {
-      this.setState({
-        errorMessage: 'Permission to access location denied',
-      });
+      console.log('error');
+      //this.props.errorMessage: 'Permission to access location denied';
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    this.setState({ lat: location.latitude, lon: location.longitude });
+    console.log(location.latitude "|" location.longitude)
+
+    //this.props.lat: location.latitude,
+    //this.props.lon: location.longitude,
   };
+}
