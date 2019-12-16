@@ -10,8 +10,6 @@ import {
   View,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
-
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -36,7 +34,7 @@ export default function HomeScreen() {
 
           <View
             style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            <Text>screens/HomeScreen.js</Text>
           </View>
 
           <Text style={styles.getStartedText}>
@@ -60,9 +58,9 @@ export default function HomeScreen() {
 
         <View
           style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
+          <Text style={styles.codeHighlightText}>
             navigation/MainTabNavigator.js
-          </MonoText>
+          </Text>
         </View>
       </View>
     </View>
