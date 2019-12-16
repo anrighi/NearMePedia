@@ -7,7 +7,8 @@ import {Ionicons} from '@expo/vector-icons';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import {PersistGate} from 'redux-persist/integration/react'
-import {AsyncStorage} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {persistStore, persistReducer} from "redux-persist";
 import positionReducer from './assets/reducers/reducer'
 import AppNavigator from './navigation/AppNavigator';
@@ -24,6 +25,10 @@ const persistor = persistStore(store);
 
 store.dispatch(getLocation(52, 11.3210021))
 
+console.log(persistor.getState())
+
+
+
 const App = () => {
     return (
         <Provider store={store}>
@@ -33,6 +38,8 @@ const App = () => {
         </Provider>
     )
 };
+
+
 
 const styles = StyleSheet.create({
     container: {
