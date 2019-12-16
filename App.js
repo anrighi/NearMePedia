@@ -1,7 +1,6 @@
 // guida per redux e redux persist
 // https://medium.com/survival-development/simple-redux-persist-configuration-in-react-native-expo-environment-5cae7c4a22
 
-
 import React, {useState} from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
@@ -30,10 +29,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <View style={styles.container}>
-                    {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
-                    <AppNavigator/>
-                </View>
+                <AppNavigator/>
             </PersistGate>
         </Provider>
     )

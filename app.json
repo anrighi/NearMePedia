@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "NearMe",
-    "slug": "NearMe",
+    "name": "NearMePedia",
+    "slug": "NearMePedia",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

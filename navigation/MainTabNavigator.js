@@ -85,16 +85,10 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-<<<<<<< HEAD
-    HomeStack,
-    LinksStack,
-    SettingsStack,
-=======
   HomeStack,
   PoiStack,
   ReadingListStack,
   SettingsStack,
->>>>>>> 131a6cf27000a671adf3070285ceb69804fdd5e8
 });
 
 tabNavigator.path = '';
