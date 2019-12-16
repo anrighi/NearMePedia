@@ -9,21 +9,21 @@ import {createStore} from 'redux'
 import {PersistGate} from 'redux-persist/integration/react'
 import {AsyncStorage} from 'react-native'
 import {persistStore, persistReducer} from "redux-persist";
-
+import positionReducer from './assets/reducers/reducer'
 import AppNavigator from './navigation/AppNavigator';
+import {getLocation} from './assets/actions/actions'
 
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
 };
 
-const visibilityFilter = (state = 0, action) => {
-    return state
-};
 
-const persistedReducer = persistReducer(persistConfig, visibilityFilter);
+const persistedReducer = persistReducer(persistConfig, positionReducer);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
+
+store.dispatch(getLocation(46.4925704, 11.3210021))
 
 const App = () => {
     return (
