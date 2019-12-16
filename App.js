@@ -18,7 +18,6 @@ const persistConfig = {
     storage: AsyncStorage,
 };
 
-
 const persistedReducer = persistReducer(persistConfig, positionReducer);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
