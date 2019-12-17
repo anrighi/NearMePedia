@@ -1,12 +1,11 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {ExpoLinksView} from '@expo/samples';
-import WikiList from '../components/WikiList';
+import DevLocation from "../components/DevLocation";
 
 export default function PoiScreen() {
     return (
         <ScrollView style={styles.container}>
-            <WikiList/>
+
         </ScrollView>
     );
 }

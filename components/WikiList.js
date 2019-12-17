@@ -1,7 +1,12 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Image, Text, View, Button} from 'react-native';
 import Poicard from './PoiCard';
-import DevLocation from "./DevLocation";
+/*
+import {LocationContainer} from '../assets/containers/containers'
+import {WikiDataContainer} from '../assets/containers/containers'
+import {Subscribe} from "unstated";
+import WikiDataGetter from "./WikiDataGetter";
+*/
 
 class WikiList extends React.Component {
 
@@ -9,12 +14,25 @@ class WikiList extends React.Component {
         return (
             <View className="patient-container">
                 <Poicard title='titolo'/>
-                <DevLocation/>
             </View>
         )
     }
 }
+/*
+const List = {
 
+    render() {
+        return (
+            <Subscribe to={[LocationContainer, WikiDataContainer]}>
+                {(location, wikiData) => (
+                    <View>{WikiDataGetter(location , wikiData)}</View>
+
+                )}
+            </Subscribe>
+        )
+    }
+}
+*/
 const styles = StyleSheet.create({
     container: {
         flex: 1,
