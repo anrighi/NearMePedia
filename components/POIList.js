@@ -4,24 +4,20 @@ import Poicard from './PoiCard';
 import DevLocation from "./DevLocation";
 import {Subscribe} from "unstated";
 import POIContainer from "../assets/containers/POIContainer";
-/*
+import {getDistance} from "./Geocoding";
 import {LocationContainer} from '../assets/containers/containers'
-import {WikiDataContainer} from '../assets/containers/containers'
-import {Subscribe} from "unstated";
-import WikiDataGetter from "./WikiDataGetter";
-*/
 
 class WikiList extends React.Component {
 
     render() {
         return (
-            <Subscribe to={[POIContainer]}>
-                {props => (
+            <Subscribe to={[POIContainer, LocationContainer]}>
+                {(propsPOI, propsLocation) => (
                     <View>
                         {
                             props.state.pois.map(function (d, idx) {
                                 return (
-                                    <Poicard key={idx++} name={d.name}/>
+                                    <Poicard key={idx++} name={d.name} startPoint={}/>
                                 )
                             })
                         }
@@ -31,6 +27,7 @@ class WikiList extends React.Component {
         )
     }
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
