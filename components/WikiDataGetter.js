@@ -8,7 +8,7 @@ export default function getWikiList(currLoc , wikiContainer) {
         action: "query",
         generator: "geosearch",
         prop: "coordinates|pageimages",
-        ggscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
+        ggscoord: currLoc.state.coord.lat + "|" + currLoc.state.coord.long,
         format: "json"
     }
 

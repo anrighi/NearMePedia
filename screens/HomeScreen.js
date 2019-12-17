@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import WikiList from "../components/WikiList";
 
 export default function HomeScreen() {
 
@@ -21,14 +22,7 @@ export default function HomeScreen() {
                 </View>
 
                 <View style={styles.getStartedContainer}>
-                    <DevelopmentModeNotice/>
-
-                    <Text style={styles.getStartedText}>Get started by opening</Text>
-
-                    <View
-                        style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-                        <Text>screens/HomeScreen.js</Text>
-                    </View>
+                    <WikiList/>
                 </View>
 
                 <View style={styles.helpContainer}>
