@@ -6,6 +6,7 @@ import {LocationContainer} from '../assets/containers/containers'
 import {WikiDataContainer} from '../assets/containers/containers'
 import {Subscribe} from "unstated";
 import {getWikiData} from "./WikiDataGetter";
+import WikiCard from "./WikiCard";
 
 export default class WikiList extends React.Component {
 
@@ -13,17 +14,19 @@ export default class WikiList extends React.Component {
         return (
             <View>
                 <Poicard title='titolo'/>
+                <DataBtn/>
                 <List/>
             </View>
         )
     }
 }
 
+
 async function getData(loc, container) {
-   getWikiData(loc, container);
+    getWikiData(loc, container);
 }
 
-class List extends React.Component {
+class DataBtn extends React.Component {
 
     render() {
         return (
@@ -32,13 +35,34 @@ class List extends React.Component {
                     <View>
                         <Button
                             title="get list"
-                            onPress={async () => await getData(location, container)}></Button>
+                            onPress={async () => await getData(location, container)}/>
                     </View>
                 )}
             </Subscribe>
         )
     }
 }
+
+class List extends React.Component {
+
+    render() {
+        return (
+            <Subscribe to={[WikiDataContainer]}>
+                {props => (
+                    <ScrollView>
+                        {props.state.results.map(function (d, idx) {
+                            return (
+                                <WikiCard key={idx++} title={d.title}/>
+                            );
+                        })
+                    }
+                    </ScrollView>
+                )}
+            </Subscribe>
+        )
+    }
+}
+
 
 const styles = StyleSheet.create({
     container: {

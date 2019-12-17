@@ -7,7 +7,7 @@ import POIContainer from "../assets/containers/POIContainer";
 import {getDistance} from "./Geocoding";
 import {LocationContainer} from '../assets/containers/containers'
 
-class WikiList extends React.Component {
+class PoiList extends React.Component {
 
     render() {
         return (
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default WikiList
+export default PoiList

@@ -21,7 +21,7 @@ export class LocationContainer extends PersistContainer {
         error: ''
     }
 
-     setLocation = (lat, long) => {
+    setLocation = (lat, long) => {
         this.setState({coord: {lat: lat, long: long}});
     }
 
@@ -43,15 +43,10 @@ export class WikiDataContainer extends PersistContainer {
         results: []
     }
 
-    addResult = (title, lat, long, dist) => {
+    addResult = async (title, lat, long, dist) => {
         this.setState({
-            results: [...this.state.results, {title: title, coord: {lat: lat, long: long, dist: dist}}]
-        })
-    }
 
-    resetResult = () => {
-        this.setState({
-            results: []
+            results: [...this.state.results, {title: title, coord: {lat: lat, long: long, dist: dist}}]
         })
     }
 

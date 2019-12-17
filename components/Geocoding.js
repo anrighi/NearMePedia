@@ -11,14 +11,14 @@ export async function getAddress(long, lat) {
 
 export async function getCoordinates(address) {
     return Location.geocodeAsync(address).then(res => {
-        return {
-            accuracy: res[0].accuracy,
+        let object = {
             coord:
                 {
                     long: res[0].longitude,
                     lat: res[0].latitude
                 }
         }
+        return object
     })
 }
 
