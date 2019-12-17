@@ -1,7 +1,18 @@
 import React from 'react';
-import {Container} from 'unstated';
+import {PersistContainer} from 'unstated-persist'
+import {AsyncStorage} from 'react-native'
 
-export class LocationContainer extends Container {
+export class LocationContainer extends PersistContainer {
+
+    persist = {
+
+        key: 'counter',
+        version: 1,
+        storage: AsyncStorage,
+
+    }
+
+    
     state = {
         coord: {
             lat: 0,

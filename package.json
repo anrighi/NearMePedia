@@ -20,6 +20,7 @@
     "expo-constants": "^7.0.0",
     "expo-font": "^7.0.0",
     "expo-location": "~7.0.0",
+    "expo-permissions": "latest",
     "expo-web-browser": "^7.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
@@ -29,7 +30,7 @@
     "react-native-web": "^0.11.7",
     "react-navigation": "^3.12.0",
     "unstated": "^2.1.1",
-    "expo-permissions": "latest"
+    "unstated-persist": "0.0.4"
   },
   "devDependencies": {
     "@react-native-community/async-storage": "^1.7.1",
