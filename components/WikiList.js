@@ -5,7 +5,7 @@ import DevLocation from "./DevLocation";
 import {LocationContainer} from '../assets/containers/containers'
 import {WikiDataContainer} from '../assets/containers/containers'
 import {Subscribe} from "unstated";
-import WikiDataGetter from "./WikiDataGetter";
+import {getWikiData} from "./WikiDataGetter";
 
 export default class WikiList extends React.Component {
 
@@ -19,16 +19,20 @@ export default class WikiList extends React.Component {
     }
 }
 
+async function getData(loc, container) {
+   getWikiData(loc, container);
+}
+
 class List extends React.Component {
 
     render() {
         return (
             <Subscribe to={[LocationContainer, WikiDataContainer]}>
-                {(location, wikiData) => (
-                    <View>{
-                        WikiDataGetter(location, wikiData)
-                    }
-                        <Text> CIAO</Text>
+                {(location, container) => (
+                    <View>
+                        <Button
+                            title="get list"
+                            onPress={async () => await getData(location, container)}></Button>
                     </View>
                 )}
             </Subscribe>

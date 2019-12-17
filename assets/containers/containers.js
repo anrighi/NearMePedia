@@ -40,24 +40,19 @@ export class WikiDataContainer extends PersistContainer {
 
 
     state = {
-        title: '',
-        image: '',
-        coord: {
-            lat: 0,
-            long: 0,
-        }
+        results: []
     }
 
-    setCoordinates = (lat, long) => {
-        this.setState({coord: {lat: lat, long: long}});
+    addResult = (title, lat, long, dist) => {
+        this.setState({
+            results: [...this.state.results, {title: title, coord: {lat: lat, long: long, dist: dist}}]
+        })
     }
 
-    setTitle = (title) => {
-        this.setState({title: title});
-    }
-
-    setImage = (image) => {
-        this.setState({image: image});
+    resetResult = () => {
+        this.setState({
+            results: []
+        })
     }
 
 }
