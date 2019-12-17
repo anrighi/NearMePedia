@@ -1,11 +1,23 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Image, Text, View, Button } from 'react-native';
+import {ScrollView, StyleSheet, Image, Text, View, Button} from 'react-native';
 
-export default function PoiCard(props) {
+export default class PoiCard extends React.Component {
 
-  return (
-   <View>
-   		<Text>{props.title}</Text>
-   </View>
-  );
+    constructor(props) {
+        super(props);
+    }
+
+    state = {
+        name: this.props.name,
+        coord: this.props.coord
+    }
+
+    render() {
+        return (
+            <View>
+                <Text>{this.state.name}</Text>
+            </View>
+        );
+    }
+
 }

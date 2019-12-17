@@ -1,19 +1,27 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import {ExpoLinksView} from '@expo/samples';
+import {View, StyleSheet, Button} from 'react-native';
 import WikiList from '../components/WikiList';
+import AddLocationScreen from "./AddLocationScreen";
 
-export default function PoiScreen() {
-    return (
-        <ScrollView style={styles.container}>
-            <WikiList/>
-        </ScrollView>
-    );
+class PoiScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Locations',
+    };
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Button
+                    onPress={() => this.props.navigation.navigate('AddLocation')}
+                    title={'Add location'}>
+                    Add location
+                </Button>
+                <WikiList/>
+            </View>
+        );
+    }
 }
 
-PoiScreen.navigationOptions = {
-    title: 'Links',
-};
 
 const styles = StyleSheet.create({
     container: {
@@ -22,3 +30,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
 });
+
+export default PoiScreen

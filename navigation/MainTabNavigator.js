@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import PoiScreen from '../screens/PoiScreen';
 import ReadingListScreen from '../screens/ReadingListScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AddLocationScreen from "../screens/AddLocationScreen";
 
 const config = Platform.select({
     web: {headerMode: 'screen'},
@@ -37,33 +38,34 @@ HomeStack.navigationOptions = {
 HomeStack.path = '';
 
 const PoiStack = createStackNavigator(
-  {
-    Poi: PoiScreen,
-  },
-  config
+    {
+        Poi: PoiScreen,
+        AddLocation: AddLocationScreen
+    },
+    config
 );
 
 PoiStack.navigationOptions = {
-  tabBarLabel: 'POI',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
+    tabBarLabel: 'POI',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}/>
+    ),
 };
 
 PoiStack.path = '';
 
 const ReadingListStack = createStackNavigator(
-  {
-    ReadingList: ReadingListScreen,
-  },
-  config
+    {
+        ReadingList: ReadingListScreen,
+    },
+    config
 );
 
 ReadingListStack.navigationOptions = {
-  tabBarLabel: 'Reading List',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
+    tabBarLabel: 'Reading List',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}/>
+    ),
 };
 
 ReadingListStack.path = '';
@@ -85,10 +87,10 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  PoiStack,
-  ReadingListStack,
-  SettingsStack,
+    HomeStack,
+    PoiStack,
+    ReadingListStack,
+    SettingsStack,
 });
 
 tabNavigator.path = '';
