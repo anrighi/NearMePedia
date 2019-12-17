@@ -43,10 +43,11 @@ export class WikiDataContainer extends PersistContainer {
         results: []
     }
 
-    addResult = async (title, lat, long, dist) => {
-        this.setState({
+    addResult = async (array) => {
+        console.log(array)
 
-            results: [...this.state.results, {title: title, coord: {lat: lat, long: long, dist: dist}}]
+        this.setState({
+            results: [...this.state.results, ...array]
         })
     }
 

@@ -25,11 +25,21 @@ export async function getWikiData(currLoc, container) {
         .then(function (response) {
             const pages = response.query.geosearch;
             let i = 0;
+            let array = []
+
             for (let place in pages) {
-                console.log(place)
-                container.addResult(pages[place].title, pages[place].lat, pages[place].lon, pages[place].dist);
+                console.log(pages[place].title)
+                array = [...array, {
+                    title: pages[place].title,
+                    coord: {lat: pages[place].lat, lon: pages[place].lon, dist: pages[place].dist}
+                }];
                 i++;
             }
+
+            console.log(array)
+
+            container.addResult(array)
+
             console.log('Added results: ' + i);
         })
         .catch(function (error) {

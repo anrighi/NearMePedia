@@ -17,7 +17,6 @@ export default class WikiCard extends React.Component {
         return (
             <View>
                 <Text>{this.state.title}</Text>
-
             </View>
         );
     }

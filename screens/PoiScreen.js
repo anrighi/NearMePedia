@@ -23,6 +23,8 @@ class PoiScreen extends React.Component {
                     Show map
                 </Button>
                 <POIList/>
+
+
                 <DevLocation/>
             </View>
         );

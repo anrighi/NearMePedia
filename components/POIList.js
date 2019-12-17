@@ -15,9 +15,9 @@ class PoiList extends React.Component {
                 {(propsPOI, propsLocation) => (
                     <View>
                         {
-                            props.state.pois.map(function (d, idx) {
+                            propsPOI.state.pois.map(function (d, idx) {
                                 return (
-                                    <Poicard key={idx++} name={d.name} startPoint={}/>
+                                    <Poicard key={idx++} name={d.name}/>
                                 )
                             })
                         }
