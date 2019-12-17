@@ -8,6 +8,7 @@ import PoiScreen from '../screens/PoiScreen';
 import ReadingListScreen from '../screens/ReadingListScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AddLocationScreen from "../screens/AddLocationScreen";
+import MapScreen from "../screens/MapScreen";
 
 const config = Platform.select({
     web: {headerMode: 'screen'},
@@ -40,7 +41,8 @@ HomeStack.path = '';
 const PoiStack = createStackNavigator(
     {
         Poi: PoiScreen,
-        AddLocation: AddLocationScreen
+        AddLocation: AddLocationScreen,
+        Map: MapScreen
     },
     config
 );
