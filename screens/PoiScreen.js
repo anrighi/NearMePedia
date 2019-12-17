@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Button} from 'react-native';
-import WikiList from '../components/WikiList';
+import DevLocation from '../components/DevLocation';
 import AddLocationScreen from "./AddLocationScreen";
 
 class PoiScreen extends React.Component {
@@ -16,7 +16,7 @@ class PoiScreen extends React.Component {
                     title={'Add location'}>
                     Add location
                 </Button>
-                <WikiList/>
+                <DevLocation/>
             </View>
         );
     }

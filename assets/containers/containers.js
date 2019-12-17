@@ -22,7 +22,7 @@ export class LocationContainer extends PersistContainer {
     }
 
      setLocation = (lat, long) => {
-        this.setState({lat: lat, long: long});
+        this.setState({coord: {lat: lat, long: long}});
     }
 
 }

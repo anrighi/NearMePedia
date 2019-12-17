@@ -6,6 +6,7 @@ import * as Permissions from 'expo-permissions';
 import {LocationContainer} from '../assets/containers/containers'
 import {Subscribe} from 'unstated'
 
+
 export default class DevLocation extends React.Component {
 
     state = {
@@ -15,11 +16,9 @@ export default class DevLocation extends React.Component {
     }
 
 
-    componentWillMount() {
+    componentDidMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
             this.setState({errorMessage: 'Invalid platform - Try on real device'});
-        } else {
-            this._getLocationAsync()
         }
     }
 
@@ -33,13 +32,17 @@ export default class DevLocation extends React.Component {
         let location = await Location.getCurrentPositionAsync({});
         this.setState({lat: location.coords.latitude, long: location.coords.longitude});
 
-        console.log(location.coords.latitude + "|" + location.coords.longitude)
-
+        console.log('DEVLOC -> Dati ritornati dal device: ' + location.coords.latitude, location.coords.longitude)
     }
 
-    retreiveContent(props) {
-        props.setLocation(this.state.lat, this.state.long);
-        //TODO: Move to HomeScreen with the results retreived by WikiDataGetter
+    async retrieveContent(store) {
+
+        await this._getLocationAsync()
+
+        console.log('DEVLOC -> Dati nello stato: ' + this.state.lat, this.state.long);
+
+        store.setLocation(this.state.lat, this.state.long);
+        //TODO: Move to HomeScreen with the results retrieved by WikiDataGetter
     }
 
 
@@ -47,13 +50,12 @@ export default class DevLocation extends React.Component {
         if (this.state.errorMessage === '') {
             return (
                 <Subscribe to={[LocationContainer]}>
-                    {props => (
+                    {store => (
                         <View>
                             <Button
                                 title="Use my current location"
-                                onPress={this.retreiveContent(props)}/>
-                            <Text>{props.state.lat}</Text>
-                            <Text>{props.state.long}</Text>
+                                onPress={async () => await this.retrieveContent(store)}/>
+
                         </View>
                     )}
                 </Subscribe>
