@@ -6,7 +6,7 @@ import POIList from "../components/POIList";
 
 class PoiScreen extends React.Component {
     static navigationOptions = {
-        title: 'Locations',
+        title: 'Point of Interests',
     };
 
     render() {
@@ -17,13 +17,8 @@ class PoiScreen extends React.Component {
                     title={'Add location'}>
                     Add location
                 </Button>
-                <Button
-                    onPress={() => this.props.navigation.navigate('Map')}
-                    title={'Show map'}>
-                    Show map
-                </Button>
-                <POIList/>
                 <DevLocation clickFunction={() => this.props.navigation.navigate('Home')}/>
+                <POIList/>
             </View>
         );
     }

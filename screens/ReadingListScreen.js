@@ -1,14 +1,27 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import ReadingList from "../components/ReadingList";
+import {Button, View} from "react-native";
 
-export default function ReadingListScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+class ReadingListScreen extends React.Component {
+
+    render() {
+        return (
+            <View>
+                <Button
+                    onPress={() => this.props.navigation.navigate('Map')}
+                    title={'Show map'}>
+                    Show map
+                </Button>
+                <ReadingList/>
+            </View>
+        )
+    }
+
+
 }
 
 ReadingListScreen.navigationOptions = {
-  title: 'app.json',
+    title: 'Reading List',
 };
+
+export default ReadingListScreen
