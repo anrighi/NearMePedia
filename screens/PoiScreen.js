@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Button} from 'react-native';
 import DevLocation from '../components/DevLocation';
 import AddLocationScreen from "./AddLocationScreen";
+import POIList from "../components/POIList";
 
 class PoiScreen extends React.Component {
     static navigationOptions = {
@@ -16,6 +17,12 @@ class PoiScreen extends React.Component {
                     title={'Add location'}>
                     Add location
                 </Button>
+                <Button
+                    onPress={() => this.props.navigation.navigate('Map')}
+                    title={'Show map'}>
+                    Show map
+                </Button>
+                <POIList/>
                 <DevLocation/>
             </View>
         );

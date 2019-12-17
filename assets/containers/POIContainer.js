@@ -11,6 +11,7 @@ class POIContainer extends PersistContainer {
         storage: AsyncStorage,
     }
 
+
     state = {
         pois: [],
         error: ''
