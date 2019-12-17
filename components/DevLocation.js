@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Platform, Text, View, StyleSheet} from 'react-native';
+import {Platform, Text, View, StyleSheet, Button} from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import  LocationContainer  from '../assets/containers/containers'
-import  Subscribe from 'unstated'
-
+import {LocationContainer} from '../assets/containers/containers'
+import {Subscribe} from 'unstated'
 
 export default class DevLocation extends React.Component {
 
@@ -33,19 +32,23 @@ export default class DevLocation extends React.Component {
         //this.props.lon: location.longitude,
     };
 
-    locate() {
+    render() {
         return (
             <Subscribe to={[LocationContainer]}>
                 {counter => (
                     <View>
-                    <Button onClick={counter.setLocation(location.coords.latitude, location.coords.longitude)}>
-                        Use my location</Button>
-                    <Text>Done!</Text>
+                        <Button
+                            title="Press me"
+                            onPress={() => counter.setLocation(50, 1)}/>
+                        <Text>Done!</Text>
+                        <Text>{counter.state.lat}</Text>
+                        <Text>{counter.state.long}</Text>
+
                     </View>
                 )}
             </Subscribe>
         );
-   }
+    }
 }
 
 
