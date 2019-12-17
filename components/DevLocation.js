@@ -3,10 +3,11 @@ import {Platform, Text, View, StyleSheet} from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import getLocation from '../assets/reducers/reducer'
-import {connect} from 'react-redux'
+import  LocationContainer  from '../assets/containers/containers'
+import  Subscribe from 'unstated'
 
-class DevLocation extends React.Component {
+
+export default class DevLocation extends React.Component {
 
     componentWillMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -28,17 +29,23 @@ class DevLocation extends React.Component {
         let location = await Location.getCurrentPositionAsync({});
         console.log(location.coords.latitude + "|" + location.coords.longitude)
 
-        this.props.getLocation(location.coords.longitude, location.coords.latitude)
-
         //this.props.lat: location.latitude,
         //this.props.lon: location.longitude,
     };
 
-    render() {
+    locate() {
         return (
-            <Text>Done!</Text>
+            <Subscribe to={[LocationContainer]}>
+                {counter => (
+                    <View>
+                    <Button onClick={counter.setLocation(location.coords.latitude, location.coords.longitude)}>
+                        Use my location</Button>
+                    <Text>Done!</Text>
+                    </View>
+                )}
+            </Subscribe>
         );
-    }
+   }
 }
 
-export default connect(null, {getLocation: getLocation})(DevLocation)
+
