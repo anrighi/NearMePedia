@@ -6,40 +6,24 @@ export default function getWikiList(currLoc , wikiContainer) {
 
     var params = {
         action: "query",
-        generator: "geosearch",
-        prop: "coordinates|pageimages",
-        ggscoord: currLoc.state.coord.lat + "|" + currLoc.state.coord.long,
+        list: "geosearch",
+        gscoord: "37.7891838|-122.4033522",
+        gsradius: "10000",
+        gslimit: "10",
         format: "json"
-    }
+    };
 
     url = url + "?origin=*";
-    Object.keys(params).forEach(function (key) {
-        url += "&" + key + "=" + params[key];
-    });
+    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
 
     fetch(url)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            var pages = response.query.pages;
-            let array;
-
-            for (var page in pages) {
-
-                let pageToCheck = pages[page];
-
-                array = [...array, {title: pageToCheck.title,}];
-
-                console.log(pages[page].title + ": " + pages[page].thumbnail.source);
-
-                wikiContainer.setTitle(pages[page].title);
-                wikiContainer.setImage(pages[page].thumbnail.source);
-                wikiContainer.setCoordinates( pages[page].coordinates.lat, pages[page].coordinates.lon);
+        .then(function(response){return response.json();})
+        .then(function(response) {
+            let pages = response.query.geosearch;
+            console.log(url)
+            for (let place in pages) {
+               // console.log(pages[place].title);
             }
         })
-        .catch(function (error) {
-            console.log(error);
-        });
-
+        .catch(function(error){console.log(error);});
 }

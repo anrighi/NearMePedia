@@ -19,13 +19,17 @@ export default class WikiList extends React.Component {
     }
 }
 
-class List  extends React.Component{
+class List extends React.Component {
 
     render() {
         return (
             <Subscribe to={[LocationContainer, WikiDataContainer]}>
                 {(location, wikiData) => (
-                    <View>{WikiDataGetter(location , wikiData)}<Text> CIAO</Text></View>
+                    <View>{
+                        WikiDataGetter(location, wikiData)
+                    }
+                        <Text> CIAO</Text>
+                    </View>
                 )}
             </Subscribe>
         )
