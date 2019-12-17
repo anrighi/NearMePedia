@@ -8,12 +8,18 @@ import {Subscribe} from 'unstated'
 
 export default class DevLocation extends React.Component {
 
+    state = {
+        lat: 0,
+        long: 0,
+        errorMessage: ''
+    }
+
+
     componentWillMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
-            //this.props.errorMessage = 'Not working in an Emulator. Try with real device';
-            console.log('platform error');
+            this.setState({errorMessage: 'Invalid platform - Try on real device'});
         } else {
-            this._getLocationAsync();
+            this._getLocationAsync()
         }
     }
 
@@ -21,33 +27,44 @@ export default class DevLocation extends React.Component {
         let {status} = await Permissions.askAsync(Permissions.LOCATION);
 
         if (status !== 'granted') {
-            console.log('error');
-            //this.props.errorMessage: 'Permission to access location denied';
+            this.setState({errorMessage: 'Permission to access location denied'});
         }
 
         let location = await Location.getCurrentPositionAsync({});
+        this.setState({lat: location.coords.latitude, long: location.coords.longitude});
+
         console.log(location.coords.latitude + "|" + location.coords.longitude)
 
-        //this.props.lat: location.latitude,
-        //this.props.lon: location.longitude,
-    };
+    }
+
+    retreiveContent(props) {
+        props.setLocation(this.state.lat, this.state.long);
+        //TODO: Move to HomeScreen with the results retreived by WikiDataGetter
+    }
+
 
     render() {
-        return (
-            <Subscribe to={[LocationContainer]}>
-                {counter => (
-                    <View>
-                        <Button
-                            title="Press me"
-                            onPress={() => counter.setLocation(50, 1)}/>
-                        <Text>Done!</Text>
-                        <Text>{counter.state.lat}</Text>
-                        <Text>{counter.state.long}</Text>
-
-                    </View>
-                )}
-            </Subscribe>
-        );
+        if (this.state.errorMessage === '') {
+            return (
+                <Subscribe to={[LocationContainer]}>
+                    {props => (
+                        <View>
+                            <Button
+                                title="Use my current location"
+                                onPress={this.retreiveContent(props)}/>
+                            <Text>{props.state.lat}</Text>
+                            <Text>{props.state.long}</Text>
+                        </View>
+                    )}
+                </Subscribe>
+            );
+        } else {
+            return (
+                <View>
+                    <Text>{this.state.errorMessage}</Text>
+                </View>
+            );
+        }
     }
 }
 

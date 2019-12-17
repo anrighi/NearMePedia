@@ -20,6 +20,7 @@ class PoiScreen extends React.Component {
             </View>
         );
     }
+
 }
 
 
