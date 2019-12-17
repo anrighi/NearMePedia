@@ -21,11 +21,10 @@ class POIContainer extends PersistContainer {
     async insertLocation(text, goBack) {
         if (text.length > 0) {
             let obj = await getCoordinates(text)
-            if (obj.accuracy > 80) {
-                this.setState({
-                    pois: [...this.state.pois, {name: text, coord: obj.coord}]
-                })
-            }
+
+            this.setState({
+                pois: [...this.state.pois, {name: text, coord: obj.coord}]
+            })
         }
     }
 }

@@ -8,14 +8,16 @@ export default class WikiCard extends React.Component {
     }
 
     state = {
-        name: this.props.name,
+        title: this.props.title,
         coord: this.props.coord
     }
+
 
     render() {
         return (
             <View>
-                <Text>{this.state.name}</Text>
+                <Text>{this.state.title}</Text>
+
             </View>
         );
     }

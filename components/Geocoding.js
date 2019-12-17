@@ -16,7 +16,6 @@ export async function getCoordinates(address) {
     return Location.geocodeAsync(address).then(res => {
 
         let object = {
-            accuracy: res[0].accuracy,
             coord:
                 {
                     long: res[0].longitude,

@@ -11,7 +11,7 @@ import {Subscribe} from "unstated";
 import WikiDataGetter from "./WikiDataGetter";
 */
 
-class WikiList extends React.Component {
+class PoiList extends React.Component {
 
     render() {
         return (
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default WikiList
+export default PoiList
