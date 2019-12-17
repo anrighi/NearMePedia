@@ -1,6 +1,9 @@
 import React from 'react';
-import {ScrollView, TouchableOpacity, StyleSheet, Image, Text, View, Button} from 'react-native';
+import {Alert, TouchableOpacity, StyleSheet, Image, Text, View, Button} from 'react-native';
 import * as WebBrowser from "expo-web-browser";
+import {Subscribe} from "unstated";
+import ReadingContainer from "../assets/containers/ReadingContainer";
+import MapView from "react-native-maps";
 
 export default class WikiCard extends React.Component {
 
@@ -13,24 +16,52 @@ export default class WikiCard extends React.Component {
         coord: this.props.coord
     }
 
-    handlePress(title){
+    handlePressBrowser(title) {
         let link = 'https://en.wikipedia.org/wiki/' + title;
         WebBrowser.openBrowserAsync(
             link
         );
     }
 
+    handlePressReading(container){
+
+        console.log('HANDLER ---> ' + this.state.coord.lat)
+
+        Alert.alert(
+            'Add to Reading List?',
+            'Adding to a Reading List saves your favourite locations and shows them on the map!',
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                { text: 'OK', onPress: () => container.insertLocation(this.state) },
+            ],
+            { cancelable: false }
+        );
+    }
+
+
+
+
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.touchable} onPress={async () => await this.handlePress(this.state.title)}>
+                <TouchableOpacity style={styles.touchable}
+                                  onPress={async () => await this.handlePressBrowser(this.state.title)}>
                     <Text>
                         {this.state.title}
                     </Text>
-                    <Button
-                        title="♡"
-                        style={styles.button}
-                    />
+                    <Subscribe to={[ReadingContainer]}>
+                        {props => (
+                            <Button
+                                title="♡"
+                                style={styles.button}
+                                onPress={async () => await this.handlePressReading(props)}
+                            />
+                        )}
+                    </Subscribe>
                 </TouchableOpacity>
             </View>
         );

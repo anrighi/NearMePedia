@@ -14,7 +14,7 @@ export default class WikiList extends React.Component {
                         <ScrollView>
                             {props.state.results.map(function (d, idx) {
                                 return (
-                                    <WikiCard key={idx++} title={d.title}/>
+                                    <WikiCard key={idx++} title={d.title} coord={d.coord}/>
                                 );
                             })
                             }

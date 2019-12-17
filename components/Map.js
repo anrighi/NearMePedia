@@ -14,10 +14,10 @@ export default class Map extends React.Component {
                     {props => (
                         props.state.read.map(function (d, idx) {
                             return (
-                                <Marker
-                                    key={idx++}
-                                    coordinate={{latitude: d.coord.lat, longitude: d.coord.long}}
-                                    title={d.name}
+                               <Marker
+                                  key={idx++}
+                                  coordinate={{latitude: d.coord.lat, longitude: d.coord.lon}}
+                                  title={d.name}
                                 />
                             )
                         })
