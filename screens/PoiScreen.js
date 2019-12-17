@@ -23,9 +23,7 @@ class PoiScreen extends React.Component {
                     Show map
                 </Button>
                 <POIList/>
-
-
-                <DevLocation/>
+                <DevLocation clickFunction={() => this.props.navigation.navigate('Home')}/>
             </View>
         );
     }

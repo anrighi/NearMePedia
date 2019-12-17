@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import {Platform, Text, View, StyleSheet, Button} from 'react-native';
+import React from 'react';
+import {Platform, Text, View, Button} from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import {LocationContainer} from '../assets/containers/containers'
 import {Subscribe} from 'unstated'
-
+import {getWikiData} from "./WikiDataGetter";
+import {WikiDataContainer} from "../assets/containers/WikiDataContainer";
+import {LocationContainer} from "../assets/containers/LocationContainer";
 
 export default class DevLocation extends React.Component {
 
@@ -14,7 +15,6 @@ export default class DevLocation extends React.Component {
         long: 0,
         errorMessage: ''
     }
-
 
     componentDidMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -45,17 +45,21 @@ export default class DevLocation extends React.Component {
         //TODO: Move to HomeScreen with the results retrieved by WikiDataGetter
     }
 
-
     render() {
         if (this.state.errorMessage === '') {
             return (
-                <Subscribe to={[LocationContainer]}>
-                    {store => (
+                <Subscribe to={[LocationContainer, WikiDataContainer]}>
+                    {(location, wiki) => (
                         <View>
                             <Button
                                 title="Use my current location"
-                                onPress={async () => await this.retrieveContent(store)}/>
-
+                                onPress=
+                                    {async () =>
+                                        await this.retrieveContent(location)
+                                            .then(await getWikiData(location, wiki)
+                                            ).then(this.props.clickFunction)
+                                    }
+                            />
                         </View>
                     )}
                 </Subscribe>

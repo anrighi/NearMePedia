@@ -1,6 +1,7 @@
 import React from 'react';
 import {PersistContainer} from 'unstated-persist'
 import {AsyncStorage} from 'react-native'
+import {Container} from "unstated";
 
 export class LocationContainer extends PersistContainer {
 
@@ -11,7 +12,6 @@ export class LocationContainer extends PersistContainer {
         storage: AsyncStorage,
 
     }
-
 
     state = {
         coord: {
@@ -27,29 +27,4 @@ export class LocationContainer extends PersistContainer {
 
 }
 
-
-export class WikiDataContainer extends PersistContainer {
-
-    persist = {
-
-        key: 'counter',
-        version: 1,
-        storage: AsyncStorage,
-
-    }
-
-
-    state = {
-        results: []
-    }
-
-    addResult = async (array) => {
-        console.log(array)
-
-        this.setState({
-            results: [...this.state.results, ...array]
-        })
-    }
-
-}
 

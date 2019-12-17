@@ -1,11 +1,9 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Image, Text, View, Button} from 'react-native';
-import Poicard from './PoiCard';
-import DevLocation from "./DevLocation";
+import {StyleSheet, View} from 'react-native';
+import PoiCard from './PoiCard';
 import {Subscribe} from "unstated";
 import POIContainer from "../assets/containers/POIContainer";
-import {getDistance} from "./Geocoding";
-import {LocationContainer} from '../assets/containers/containers'
+import {LocationContainer} from "../assets/containers/LocationContainer";
 
 class PoiList extends React.Component {
 
@@ -17,7 +15,7 @@ class PoiList extends React.Component {
                         {
                             propsPOI.state.pois.map(function (d, idx) {
                                 return (
-                                    <Poicard key={idx++} name={d.name}/>
+                                    <PoiCard key={idx++} name={d.name}/>
                                 )
                             })
                         }
