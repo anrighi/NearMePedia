@@ -5,6 +5,27 @@ import WikiList from "../components/WikiList";
 
 class HomeScreen extends React.Component {
 
+
+    state = {
+        focused: true
+
+    }
+
+    didBlurSubscription = this.props.navigation.addListener(
+        'didBlur',
+        payload => {
+            this.setState({focused: false})
+        }
+    );
+
+    willFocusSubscription = this.props.navigation.addListener(
+        'willFocus',
+        payload => {
+            this.setState({focused: true})
+        }
+    );
+
+
     static navigationOptions = ({screenProps: {t}}) => ({
         title: t('nearby')
     });
@@ -12,10 +33,13 @@ class HomeScreen extends React.Component {
     render() {
 
         return (
-            <View style={styles.container}>
-                <WikiList/>
-            </View>
-        );
+
+            (this.state.focused &&
+
+                <View style={styles.container}>
+                    <WikiList/>
+                </View>
+            ))
     }
 }
 
