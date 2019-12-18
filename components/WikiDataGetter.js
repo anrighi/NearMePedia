@@ -2,7 +2,21 @@ import React from 'react';
 
 export async function getWikiData(locale, currLoc, container) {
 
-    const url = formUrl(locale, currLoc)
+    var url = "https://" + locale + ".wikipedia.org/w/api.php";
+
+    var params = {
+        action: "query",
+        list: "geosearch",
+        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
+        gsradius: "10000",
+        gslimit: "20",
+        format: "json"
+    };
+
+    url = url + "?origin=*";
+    Object.keys(params).forEach(function (key) {
+        url += "&" + key + "=" + params[key];
+    });
 
     await fetch(url)
         .then(function (response) {
@@ -21,6 +35,7 @@ export async function getWikiData(locale, currLoc, container) {
                 i++;
             }
 
+            console.log(array[0])
             container.addResult(array)
 
             console.log('Added results: ' + i);
@@ -28,27 +43,4 @@ export async function getWikiData(locale, currLoc, container) {
         .catch(function (error) {
             console.log(error);
         });
-}
-
-
-function formUrl(locale, currLoc) {
-
-    let url = "https://" + locale + ".wikipedia.org/w/api.php";
-
-    const params = {
-        action: "query",
-        list: "geosearch",
-        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
-        gsradius: "10000",
-        gslimit: "20",
-        format: "json"
-    };
-
-    url = url + "?origin=*";
-    Object.keys(params).forEach(function (key) {
-        url += "&" + key + "=" + params[key];
-    });
-
-    return url
-
 }

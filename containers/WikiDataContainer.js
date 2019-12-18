@@ -9,9 +9,9 @@ class WikiDataContainer extends Container {
     addResult = array => {
 
         this.setState({
-            results: array
-        });
-
+                results: array
+            }
+        )
     }
 
 }
