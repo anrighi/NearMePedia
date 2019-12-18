@@ -4,6 +4,8 @@ import * as WebBrowser from "expo-web-browser";
 import {Subscribe} from "unstated";
 import ReadingContainer from "../assets/containers/ReadingContainer";
 import MapView from "react-native-maps";
+import {getDistance} from "./Geocoding";
+import {LocationContainer} from "../assets/containers/LocationContainer";
 
 export default class WikiCard extends React.Component {
 
@@ -13,7 +15,7 @@ export default class WikiCard extends React.Component {
 
     state = {
         title: this.props.title,
-        coord: this.props.coord
+        coord: this.props.coord,
     }
 
     handlePressBrowser(title) {
@@ -23,7 +25,7 @@ export default class WikiCard extends React.Component {
         );
     }
 
-    handlePressReading(container){
+    handlePressReading(container) {
 
         console.log('HANDLER ---> ' + this.state.coord.lat)
 
@@ -36,13 +38,11 @@ export default class WikiCard extends React.Component {
                     onPress: () => console.log('Cancel Pressed'),
                     style: 'cancel',
                 },
-                { text: 'OK', onPress: () => container.insertLocation(this.state) },
+                {text: 'OK', onPress: () => container.insertLocation(this.state)},
             ],
-            { cancelable: false }
+            {cancelable: false}
         );
     }
-
-
 
 
     render() {
@@ -50,9 +50,13 @@ export default class WikiCard extends React.Component {
             <View style={styles.container}>
                 <TouchableOpacity style={styles.touchable}
                                   onPress={async () => await this.handlePressBrowser(this.state.title)}>
-                    <Text>
-                        {this.state.title}
-                    </Text>
+
+                    <Subscribe to={[LocationContainer]}>{
+                        props => (
+                            <Text>{getDistance(this.state.coord, props.coord)}</Text>
+                        )}
+                    </Subscribe>
+                    <Text>{this.state.title}</Text>
                     <Subscribe to={[ReadingContainer]}>
                         {props => (
                             <Button
