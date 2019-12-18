@@ -1,7 +1,7 @@
 // guida per unstated
 // https://github.com/jamiebuilds/unstated
 
-import React from 'react';
+import React, {useState} from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
 import {Provider} from "unstated";
@@ -50,8 +50,8 @@ const en = {
     english: 'English',
     italian: 'Italian',
     german: 'German',
-    nearby: 'Nearby',
-    errorMessage: 'Permission to access location denied'
+    nearby: 'Nearby'
+
 }
 
 
@@ -66,8 +66,7 @@ const it = {
     english: 'Inglese',
     italian: 'Italiano',
     german: 'Tedesco',
-    nearby: 'Nelle vicinanze',
-    errorMessage: 'Permesso di usare la localizzazione rifiutato'
+    nearby: 'Nelle vicinanze'
 }
 
 const de = {
@@ -81,8 +80,8 @@ const de = {
     english: 'Englisch',
     italian: 'Italienisch',
     german: 'Deustch',
-    nearby: 'in der Nähe',
-    errorMessage: 'Zugriffsberechtigung für den Standort verweigert'
+    nearby: 'in der Nähe'
+
 }
 
 

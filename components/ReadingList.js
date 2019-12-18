@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import {Subscribe} from "unstated";
 import ReadingContainer from "../containers/ReadingContainer";
 import WikiCard from "./WikiCard";
@@ -14,11 +14,7 @@ class ReadingList extends React.Component {
                         {
                             props.state.read.map(function (d, idx) {
                                 return (
-                                    <WikiCard
-                                        key={idx++}
-                                        title={d.title}
-                                        coord={d.coord}
-                                    />
+                                    <WikiCard key={idx++} title={d.title} coord={d.coord}/>
                                 )
                             })
                         }

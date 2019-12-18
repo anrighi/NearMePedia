@@ -1,15 +1,16 @@
 import React from 'react';
-import {Button, Picker, View} from "react-native";
+import {Text, View, Picker, Button} from "react-native";
 
 class SettingsScreen extends React.Component {
+
+    static navigationOptions = ({screenProps: {t}}) => ({
+        title: t('settingsScreen'),
+    })
 
     state = {
         language: 'en'
     }
 
-    static navigationOptions = ({screenProps: {t}}) => ({
-        title: t('settingsScreen'),
-    })
 
     render() {
         let {t, setLocale} = this.props.screenProps;

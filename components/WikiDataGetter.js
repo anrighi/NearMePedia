@@ -2,9 +2,9 @@ import React from 'react';
 
 export async function getWikiData(locale, currLoc, container) {
 
-    var url = "https://" + locale + ".wikipedia.org/w/api.php";
+    let url = "https://" + locale + ".wikipedia.org/w/api.php";
 
-    var params = {
+    const params = {
         action: "query",
         list: "geosearch",
         gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
@@ -35,7 +35,6 @@ export async function getWikiData(locale, currLoc, container) {
                 i++;
             }
 
-            console.log(array[0])
             container.addResult(array)
 
             console.log('Added results: ' + i);

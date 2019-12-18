@@ -1,11 +1,12 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Platform, Text, View, Button} from 'react-native';
+import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Subscribe} from 'unstated'
 import {getWikiData} from "./WikiDataGetter";
-import WikiDataContainer from "../containers/WikiDataContainer";
-import LocationContainer from "../containers/LocationContainer";
+import {WikiDataContainer} from "../containers/WikiDataContainer";
+import {LocationContainer} from "../containers/LocationContainer";
 
 export default class DevLocation extends React.Component {
 
@@ -13,7 +14,7 @@ export default class DevLocation extends React.Component {
         lat: 0,
         long: 0,
         errorMessage: ''
-    };
+    }
 
     _getLocationAsync = async () => {
         let {status} = await Permissions.askAsync(Permissions.LOCATION);
@@ -24,8 +25,18 @@ export default class DevLocation extends React.Component {
 
         let location = await Location.getCurrentPositionAsync({});
         this.setState({lat: location.coords.latitude, long: location.coords.longitude});
-    };
 
+        console.log('DEVLOC -> Dati ritornati dal device: ' + location.coords.latitude, location.coords.longitude)
+    }
+
+    async retrieveContent(store) {
+
+        await this._getLocationAsync()
+
+        console.log('DEVLOC -> Dati nello stato: ' + this.state.lat, this.state.long);
+
+        store.setLocation(this.state.lat, this.state.long);
+    }
 
     render() {
         if (this.state.errorMessage === '') {
@@ -37,8 +48,7 @@ export default class DevLocation extends React.Component {
                                 title={this.props.newT('useLocation')}
                                 onPress=
                                     {async () =>
-                                        await this._getLocationAsync()
-                                            .then(location.setLocation(this.state.lat, this.state.long))
+                                        await this.retrieveContent(location)
                                             .then(await getWikiData(this.props.newLocale, location.state, wiki))
                                             .then(this.props.clickFunction)
                                     }
@@ -50,7 +60,7 @@ export default class DevLocation extends React.Component {
         } else {
             return (
                 <View>
-                    <Text>{this.props.newT('errorMessage')}</Text>
+                    <Text>{this.state.errorMessage}</Text>
                 </View>
             );
         }

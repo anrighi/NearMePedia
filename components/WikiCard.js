@@ -1,18 +1,21 @@
 import React from 'react';
-import {Alert, Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, TouchableOpacity, StyleSheet, Image, Text, View, Button} from 'react-native';
 import * as WebBrowser from "expo-web-browser";
 import {Subscribe} from "unstated";
 import ReadingContainer from "../containers/ReadingContainer";
+import MapView from "react-native-maps";
+import {getDistance} from "./Geocoding";
+import {LocationContainer} from "../containers/LocationContainer";
 
 export default class WikiCard extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     state = {
         title: this.props.title,
         coord: this.props.coord,
-    }
-
-    constructor(props) {
-        super(props);
     }
 
     handlePressBrowser(title) {
@@ -46,8 +49,9 @@ export default class WikiCard extends React.Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.touchable}
-                                  onPress={async () => await this.handlePressBrowser(this.state.title)}
-                >
+                                  onPress={async () => await this.handlePressBrowser(this.state.title)}>
+
+
                     <Text>{this.state.title}</Text>
                     <Subscribe to={[ReadingContainer]}>
                         {props => (

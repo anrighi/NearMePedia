@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, View} from 'react-native';
+import {View, StyleSheet, Button} from 'react-native';
 import DevLocation from '../components/DevLocation';
 import POIList from "../components/POIList";
 
