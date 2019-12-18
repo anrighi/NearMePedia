@@ -16,9 +16,11 @@ class ReadingContainer extends PersistContainer {
     }
 
     async insertLocation(obj) {
+
         this.setState({
             read: [...this.state.read, obj]
         })
+
     }
 }
 

@@ -7,7 +7,7 @@ export async function getWikiData(locale, currLoc, container) {
     var params = {
         action: "query",
         list: "geosearch",
-        gscoord: currLoc.state.coord.lat + "|" + currLoc.state.coord.long,
+        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
         gsradius: "10000",
         gslimit: "20",
         format: "json"
@@ -34,6 +34,8 @@ export async function getWikiData(locale, currLoc, container) {
                 }];
                 i++;
             }
+
+            console.log(array[0])
             container.addResult(array)
 
             console.log('Added results: ' + i);

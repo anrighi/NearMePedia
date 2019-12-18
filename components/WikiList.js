@@ -11,10 +11,10 @@ export default class WikiList extends React.Component {
             <View>
                 <Subscribe to={[WikiDataContainer]}>
                     {props => (
-                        <ScrollView>
+                        <ScrollView style={styles.container}>
                             {props.state.results.map(function (d, idx) {
                                 return (
-                                    <WikiCard key={idx++} title={d.title}/>
+                                    <WikiCard key={idx++} title={d.title} coord={d.coord}/>
                                 );
                             })
                             }
@@ -28,8 +28,6 @@ export default class WikiList extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingTop: 15,
-        backgroundColor: '#fff',
+        paddingBottom: 30,
     },
 });
