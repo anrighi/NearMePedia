@@ -1,9 +1,8 @@
 import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import PoiCard from './PoiCard';
 import {Subscribe} from "unstated";
 import POIContainer from "../containers/POIContainer";
-import {LocationContainer} from "../containers/LocationContainer";
 
 class PoiList extends React.Component {
 
@@ -11,11 +10,11 @@ class PoiList extends React.Component {
         let func = this.props.dumbFunction
         let loc = this.props.newLocale
         return (
-            <Subscribe to={[POIContainer, LocationContainer]}>
-                {(propsPOI, propsLocation) => (
+            <Subscribe to={[POIContainer]}>
+                {(props) => (
                     <ScrollView style={styles.container}>
                         {
-                            propsPOI.state.pois.map(function (d, idx) {
+                            props.state.pois.map(function (d, idx) {
                                 return (
                                     <PoiCard
                                         key={idx++}

@@ -1,6 +1,6 @@
 import {Container} from "unstated";
 
-export class WikiDataContainer extends Container {
+class WikiDataContainer extends Container {
 
     state = {
         results: []
@@ -8,18 +8,12 @@ export class WikiDataContainer extends Container {
 
     addResult = array => {
 
-        console.log(array)
-
-        console.log('.............')
-
-
-
         this.setState({
             results: array
-        }, console.log(this.state.results[0]));
-
+        });
 
     }
 
 }
 
+export default WikiDataContainer
