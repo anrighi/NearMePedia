@@ -1,6 +1,5 @@
 # NearMePedia Project
-## Andrea Righi - Matr. n. 15483
-## Cristiano Lucian - Matr. n. *****
+## Andrea Righi - Matr. n. 15483 -- Cristiano Lucian - Matr. n. *****
 
 In order to make the app work, it is enough to run npm install in the root directory, it will create all the node_modules necessary to run the whole system.
 
