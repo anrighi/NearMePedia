@@ -10,7 +10,7 @@ class ReadingList extends React.Component {
         return (
             <Subscribe to={[ReadingContainer]}>
                 {props => (
-                    <ScrollView>
+                    <ScrollView style={styles.container}>
                         {
                             props.state.read.map(function (d, idx) {
                                 return (
@@ -27,9 +27,8 @@ class ReadingList extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         paddingTop: 15,
-        backgroundColor: '#fff',
+        paddingBottom: 30,
     },
 });
 

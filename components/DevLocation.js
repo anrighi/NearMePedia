@@ -16,12 +16,6 @@ export default class DevLocation extends React.Component {
         errorMessage: ''
     }
 
-    componentDidMount() {
-        if (Platform.OS === 'android' && !Constants.isDevice) {
-            this.setState({errorMessage: 'Invalid platform - Try on real device'});
-        }
-    }
-
     _getLocationAsync = async () => {
         let {status} = await Permissions.askAsync(Permissions.LOCATION);
 
@@ -42,7 +36,6 @@ export default class DevLocation extends React.Component {
         console.log('DEVLOC -> Dati nello stato: ' + this.state.lat, this.state.long);
 
         store.setLocation(this.state.lat, this.state.long);
-        //TODO: Move to HomeScreen with the results retrieved by WikiDataGetter
     }
 
     render() {
@@ -56,7 +49,7 @@ export default class DevLocation extends React.Component {
                                 onPress=
                                     {async () =>
                                         await this.retrieveContent(location)
-                                            .then(await getWikiData(location, wiki)
+                                            .then(await getWikiData(location.state, wiki)
                                             ).then(this.props.clickFunction)
                                     }
                             />

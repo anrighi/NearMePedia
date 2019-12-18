@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 10,
+        paddingVertical: 5,
     },
     touchable: {
         alignItems: 'center',
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
 
     },
     button: {
-        color: 'green',
+        color: '#cc0000',
 
     }
 });

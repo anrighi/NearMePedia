@@ -6,10 +6,12 @@ export class WikiDataContainer extends Container {
         results: []
     }
 
-    addResult = async (array) => {
+    addResult = array => {
+
         this.setState({
-            results: [...array]
-        })
+                results: array
+            }
+        )
     }
 
 }
