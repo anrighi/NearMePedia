@@ -4,16 +4,17 @@ import DevLocation from '../components/DevLocation';
 import POIList from "../components/POIList";
 
 class PoiScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Point of Interests',
-    };
+    static navigationOptions = ({screenProps: {t}}) => ({
+        title: t('poiTitle')
+    });
 
     render() {
+        let {t} = this.props.screenProps;
         return (
             <View>
                 <Button
                     onPress={() => this.props.navigation.navigate('AddLocation')}
-                    title={'Add location'}>
+                    title={t('addLocation')}>
                     Add location
                 </Button>
                 <DevLocation clickFunction={() => this.props.navigation.navigate('Home')}/>
