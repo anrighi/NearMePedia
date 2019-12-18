@@ -3,11 +3,11 @@ import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import WikiList from "../components/WikiList";
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
 
-    static navigationOptions = {
-        title: 'Nearby',
-    };
+    static navigationOptions = ({screenProps: {t}}) => ({
+        title: t('nearby')
+    });
 
     render() {
 
@@ -27,3 +27,5 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
     },
 });
+
+export default HomeScreen

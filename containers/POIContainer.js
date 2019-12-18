@@ -1,7 +1,7 @@
 import React from 'react';
 import {PersistContainer} from 'unstated-persist'
 import {AsyncStorage} from 'react-native'
-import {getCoordinates} from "../../components/Geocoding";
+import {getCoordinates} from "../components/Geocoding";
 
 class POIContainer extends PersistContainer {
 

@@ -49,7 +49,9 @@ const en = {
     setLanguage: 'Change language',
     english: 'English',
     italian: 'Italian',
-    german: 'German'
+    german: 'German',
+    nearby: 'Nearby'
+
 }
 
 
@@ -63,7 +65,8 @@ const it = {
     setLanguage: 'Imposta la lingua',
     english: 'Inglese',
     italian: 'Italiano',
-    german: 'Tedesco'
+    german: 'Tedesco',
+    nearby: 'Nelle vicinanze'
 }
 
 const de = {
@@ -76,9 +79,10 @@ const de = {
     setLanguage: 'Sprache ändern',
     english: 'Englisch',
     italian: 'Italienisch',
-    german: 'Deustch'
-}
+    german: 'Deustch',
+    nearby: 'in der Nähe'
 
+}
 
 
 i18n.translations = {it, en, de};

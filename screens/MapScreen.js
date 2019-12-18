@@ -5,7 +5,7 @@ import AddLocationScreen from "./AddLocationScreen";
 import POIList from "../components/POIList";
 import Map from "../components/Map";
 import {Subscribe} from "unstated";
-import POIContainer from "../assets/containers/POIContainer";
+import POIContainer from "../containers/POIContainer";
 import MapView from "react-native-maps";
 import {Marker} from 'react-native-maps';
 

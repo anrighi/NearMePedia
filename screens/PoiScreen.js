@@ -9,7 +9,7 @@ class PoiScreen extends React.Component {
     });
 
     render() {
-        let {t} = this.props.screenProps;
+        let {t, locale} = this.props.screenProps;
         return (
             <View>
                 <Button
@@ -17,8 +17,8 @@ class PoiScreen extends React.Component {
                     title={t('addLocation')}>
                     Add location
                 </Button>
-                <DevLocation clickFunction={() => this.props.navigation.navigate('Home')}/>
-                <POIList dumbFunction={() => this.props.navigation.navigate('Home')}/>
+                <DevLocation newT={t} newLocale={locale} clickFunction={() => this.props.navigation.navigate('Home')}/>
+                <POIList newLocale={locale} dumbFunction={() => this.props.navigation.navigate('Home')}/>
             </View>
         );
     }

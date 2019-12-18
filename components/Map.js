@@ -3,7 +3,7 @@ import MapView from 'react-native-maps';
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import {Marker} from 'react-native-maps';
 import {Subscribe} from "unstated";
-import ReadingContainer from "../assets/containers/ReadingContainer";
+import ReadingContainer from "../containers/ReadingContainer";
 
 export default class Map extends React.Component {
 

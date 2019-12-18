@@ -5,8 +5,8 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Subscribe} from 'unstated'
 import {getWikiData} from "./WikiDataGetter";
-import {WikiDataContainer} from "../assets/containers/WikiDataContainer";
-import {LocationContainer} from "../assets/containers/LocationContainer";
+import {WikiDataContainer} from "../containers/WikiDataContainer";
+import {LocationContainer} from "../containers/LocationContainer";
 
 export default class DevLocation extends React.Component {
 
@@ -39,19 +39,18 @@ export default class DevLocation extends React.Component {
     }
 
     render() {
-        let {t, locale} = this.props.screenProps;
         if (this.state.errorMessage === '') {
             return (
                 <Subscribe to={[LocationContainer, WikiDataContainer]}>
                     {(location, wiki) => (
                         <View>
                             <Button
-                                title={t('useLocation')}
+                                title={this.props.newT('useLocation')}
                                 onPress=
                                     {async () =>
                                         await this.retrieveContent(location)
-                                            .then(await getWikiData(locale, location, wiki)
-                                            ).then(this.props.clickFunction)
+                                            .then(await getWikiData(this.props.newLocale, location.state, wiki))
+                                            .then(this.props.clickFunction)
                                     }
                             />
                         </View>

@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Image, Text, View, Button, TouchableOpacity} from 'react-native';
 import {Subscribe} from "unstated";
-import ReadingContainer from "../assets/containers/ReadingContainer";
-import {LocationContainer} from "../assets/containers/LocationContainer";
-import {WikiDataContainer} from "../assets/containers/WikiDataContainer";
+import ReadingContainer from "../containers/ReadingContainer";
+import {LocationContainer} from "../containers/LocationContainer";
+import {WikiDataContainer} from "../containers/WikiDataContainer";
 import {getWikiData} from "./WikiDataGetter";
 
 export default class PoiCard extends React.Component {
@@ -19,7 +19,7 @@ export default class PoiCard extends React.Component {
 
     async callWikiGetter(container) {
         console.log(this.state.name)
-        await getWikiData(this.state, container)
+        await getWikiData(this.props.newLocale, this.state, container)
     }
 
 

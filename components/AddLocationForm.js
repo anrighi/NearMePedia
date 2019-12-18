@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, StyleSheet, Button, TextInput, KeyboardAvoidingView} from 'react-native';
 import {ExpoLinksView} from '@expo/samples';
 import {getCoordinates} from "./Geocoding";
-import POIContainer from "../assets/containers/POIContainer";
+import POIContainer from "../containers/POIContainer";
 import {Subscribe} from "unstated";
 
 export default class AddLocationForm extends React.Component {

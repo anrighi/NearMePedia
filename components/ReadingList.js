@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
 import {Subscribe} from "unstated";
-import ReadingContainer from "../assets/containers/ReadingContainer";
+import ReadingContainer from "../containers/ReadingContainer";
 import WikiCard from "./WikiCard";
 
 class ReadingList extends React.Component {
