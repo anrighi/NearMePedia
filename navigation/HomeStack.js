@@ -24,6 +24,4 @@ HomeStack.navigationOptions = {
     ),
 };
 
-HomeStack.path = '';
-
 export default HomeStack

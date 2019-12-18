@@ -1,9 +1,8 @@
 import React from 'react';
 import {PersistContainer} from 'unstated-persist'
 import {AsyncStorage} from 'react-native'
-import {Container} from "unstated";
 
-export class LocationContainer extends PersistContainer {
+class LocationContainer extends PersistContainer {
 
     persist = {
 
@@ -27,4 +26,4 @@ export class LocationContainer extends PersistContainer {
 
 }
 
-
+export default LocationContainer

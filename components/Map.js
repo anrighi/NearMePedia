@@ -1,7 +1,6 @@
 import React from 'react';
-import MapView from 'react-native-maps';
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
-import {Marker} from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
+import {Dimensions, StyleSheet} from 'react-native';
 import {Subscribe} from "unstated";
 import ReadingContainer from "../containers/ReadingContainer";
 
@@ -14,10 +13,10 @@ export default class Map extends React.Component {
                     {props => (
                         props.state.read.map(function (d, idx) {
                             return (
-                               <Marker
-                                  key={idx++}
-                                  coordinate={{latitude: d.coord.lat, longitude: d.coord.lon}}
-                                  title={d.name}
+                                <Marker
+                                    key={idx++}
+                                    coordinate={{latitude: d.coord.lat, longitude: d.coord.lon}}
+                                    title={d.name}
                                 />
                             )
                         })

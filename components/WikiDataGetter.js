@@ -2,21 +2,7 @@ import React from 'react';
 
 export async function getWikiData(locale, currLoc, container) {
 
-    let url = "https://" + locale + ".wikipedia.org/w/api.php";
-
-    const params = {
-        action: "query",
-        list: "geosearch",
-        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
-        gsradius: "10000",
-        gslimit: "20",
-        format: "json"
-    };
-
-    url = url + "?origin=*";
-    Object.keys(params).forEach(function (key) {
-        url += "&" + key + "=" + params[key];
-    });
+    const url = formUrl(locale, currLoc)
 
     await fetch(url)
         .then(function (response) {
@@ -42,4 +28,27 @@ export async function getWikiData(locale, currLoc, container) {
         .catch(function (error) {
             console.log(error);
         });
+}
+
+
+function formUrl(locale, currLoc) {
+
+    let url = "https://" + locale + ".wikipedia.org/w/api.php";
+
+    const params = {
+        action: "query",
+        list: "geosearch",
+        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
+        gsradius: "10000",
+        gslimit: "20",
+        format: "json"
+    };
+
+    url = url + "?origin=*";
+    Object.keys(params).forEach(function (key) {
+        url += "&" + key + "=" + params[key];
+    });
+
+    return url
+
 }
