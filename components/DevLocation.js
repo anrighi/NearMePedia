@@ -46,17 +46,18 @@ export default class DevLocation extends React.Component {
     }
 
     render() {
+        let {t, locale} = this.props.screenProps;
         if (this.state.errorMessage === '') {
             return (
                 <Subscribe to={[LocationContainer, WikiDataContainer]}>
                     {(location, wiki) => (
                         <View>
                             <Button
-                                title="Use my current location"
+                                title={t('useLocation')}
                                 onPress=
                                     {async () =>
                                         await this.retrieveContent(location)
-                                            .then(await getWikiData(location, wiki)
+                                            .then(await getWikiData(locale, location, wiki)
                                             ).then(this.props.clickFunction)
                                     }
                             />

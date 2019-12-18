@@ -1,8 +1,8 @@
 import React from 'react';
 
-export async function getWikiData(currLoc, container) {
+export async function getWikiData(locale, currLoc, container) {
 
-    var url = "https://en.wikipedia.org/w/api.php";
+    var url = "https://" + locale + ".wikipedia.org/w/api.php";
 
     var params = {
         action: "query",

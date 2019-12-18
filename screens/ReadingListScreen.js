@@ -4,12 +4,17 @@ import {Button, View} from "react-native";
 
 class ReadingListScreen extends React.Component {
 
+    static navigationOptions = ({screenProps: {t}}) => ({
+        title: t('readingList'),
+    })
+
     render() {
+        let {t} = this.props.screenProps;
         return (
             <View>
                 <Button
                     onPress={() => this.props.navigation.navigate('Map')}
-                    title={'Show map'}>
+                    title={t('showMap')}>
                     Show map
                 </Button>
                 <ReadingList/>
@@ -20,8 +25,5 @@ class ReadingListScreen extends React.Component {
 
 }
 
-ReadingListScreen.navigationOptions = {
-    title: 'Reading List',
-};
 
 export default ReadingListScreen
