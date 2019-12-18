@@ -1,13 +1,13 @@
 import React from 'react';
 
-export async function getWikiData(currLoc, container) {
+export async function getWikiData(locale, currLoc, container) {
 
-    var url = "https://en.wikipedia.org/w/api.php";
+    var url = "https://" + locale + ".wikipedia.org/w/api.php";
 
     var params = {
         action: "query",
         list: "geosearch",
-        gscoord: currLoc.state.coord.lat + "|" + currLoc.state.coord.long,
+        gscoord: currLoc.coord.lat + "|" + currLoc.coord.long,
         gsradius: "10000",
         gslimit: "20",
         format: "json"
@@ -34,6 +34,8 @@ export async function getWikiData(currLoc, container) {
                 }];
                 i++;
             }
+
+            console.log(array[0])
             container.addResult(array)
 
             console.log('Added results: ' + i);
