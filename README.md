@@ -12,8 +12,3 @@ We have a slight bug in the Nearby section: the container setState does not upda
 Moreover, in iOs systems, the wikipedia articles do not open the web browser: anyway, it works in the Android environment.
 
 We are sorry for the late sending
-
-
-### Day after edits
-
-We managed to solve the bug in the article displaying, it was enough to add a navigation listener which understand when the component was no more focused and implement a conditional rendering, in order to see changes take effect
